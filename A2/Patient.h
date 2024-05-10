@@ -6,6 +6,7 @@
 #include <memory>
 
 #include "AlertCalcStrategy.h"
+#include "AlertCalcContext.h"
 
 class Vitals;
 
