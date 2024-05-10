@@ -5,7 +5,7 @@
 #include <vector>
 #include <memory>
 
-#include "PatientAlertLevels.h"
+#include "AlertCalcStrategy.h"
 
 class Vitals;
 

@@ -24,6 +24,7 @@ add_executable (A2
     "PatientManagementSystem.cpp" "PatientManagementSystem.h"
     "Person.cpp" "Person.h"
     "Vitals.cpp" "Vitals.h"
+    "AlertCalcStrategy.h" "AlertCalcStrategy.cpp"
 )
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)

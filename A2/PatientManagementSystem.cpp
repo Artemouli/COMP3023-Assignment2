@@ -102,6 +102,7 @@ void PatientManagementSystem::addVitalsRecord()
 
         Vitals* v = new Vitals(heartRate, oxygenSaturation, bodyTemperature, brainActivity);
         _patientLookup[pid]->addVitals(v);
+
     }
     else {
         cout << "Patient not found" << endl;
