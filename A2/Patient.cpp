@@ -2,6 +2,10 @@
 
 #include "Vitals.h"
 
+#include "AlertCalcContext.h"
+#include "AlertCalcStrategy.h"
+#include "AlertCalc.h"
+
 #include <iostream>
 #include <iomanip>
 #include <sstream>
@@ -88,7 +92,9 @@ void Patient::addVitals(const Vitals* v)
 {
     _vitals.push_back(v);
     // TODO: calculate alert levels
-    
+    AlertCalcContext context;
+    NoCapSyndrome noCap;
+    TiccToccBrainDamage ticcTocc;
 }
 
 const std::vector<const Vitals*> Patient::vitals() const

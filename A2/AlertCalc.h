@@ -2,6 +2,7 @@
 #define ALERT_CALC
 
 #include "AlertCalcStrategy.h"
+class Patient;
 
 
 class NoCapSyndrome : public AlertCalcStrategy
