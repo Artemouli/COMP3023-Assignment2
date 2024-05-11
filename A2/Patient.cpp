@@ -95,6 +95,11 @@ void Patient::addVitals(const Vitals* v)
     AlertCalcContext context;
     NoCapSyndrome noCap;
     TiccToccBrainDamage ticcTocc;
+
+
+    //test 
+    context.setStrategy(&noCap);
+    context.executeStrategy(*this);
 }
 
 const std::vector<const Vitals*> Patient::vitals() const
