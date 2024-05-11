@@ -97,9 +97,12 @@ void Patient::addVitals(const Vitals* v)
     TiccToccBrainDamage ticcTocc;
 
 
-    //test 
-    context.setStrategy(&noCap);
-    context.executeStrategy(*this);
+    //if the primary diagnosis is NOCAP_SYNDROME 
+    if (primaryDiagnosis() == Diagnosis::NOCAP_SYNDROME)
+    {
+        context.setStrategy(&noCap);
+        context.executeStrategy(*this);
+    }
 }
 
 const std::vector<const Vitals*> Patient::vitals() const
