@@ -96,6 +96,7 @@ void Patient::addVitals(const Vitals* v)
     NoCapSyndrome noCap;
     TiccToccBrainDamage ticcTocc;
 
+    if()
 
     //if the primary diagnosis is NOCAP_SYNDROME 
     if (primaryDiagnosis() == Diagnosis::NOCAP_SYNDROME)

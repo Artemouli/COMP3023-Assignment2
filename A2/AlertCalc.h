@@ -5,6 +5,19 @@
 class Patient;
 
 
+class AmogusSus : public AlertCalcStrategy
+{
+public:
+	void calculateAlert(Patient& patient) override;
+};
+
+
+class ERush : public AlertCalcStrategy
+{
+public:
+	void calculateAlert(Patient& patient) override;
+};
+
 class NoCapSyndrome : public AlertCalcStrategy
 {
 public:
@@ -16,5 +29,6 @@ class TiccToccBrainDamage : public AlertCalcStrategy
 public:
 	void calculateAlert(Patient& patient) override;
 };
+
 
 #endif
