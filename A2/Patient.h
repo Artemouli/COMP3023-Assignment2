@@ -4,6 +4,7 @@
 
 #include <vector>
 #include <memory>
+#include <iostream>
 
 #include "AlertCalcStrategy.h"
 #include "AlertCalcContext.h"
@@ -43,7 +44,8 @@ public:
     const std::vector<std::string>& diagnoses() const;
 
     // add a vitals mesaurements record to the patient
-    void addVitals(const Vitals* v);
+    void addVitals(const Vitals* v, bool alertCheck = false);
+    //std::string callingFunction = "default"
     const std::vector<const Vitals*> vitals() const;
 
     // patients have an alert level (green, yellow, orange, red) calculated from their disease and and their last vitals

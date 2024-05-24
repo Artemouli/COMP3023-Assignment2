@@ -88,22 +88,62 @@ const std::vector<std::string>& Patient::diagnoses() const
     return _diagnosis;
 }
 
-void Patient::addVitals(const Vitals* v)
+void Patient::addVitals(const Vitals* v, bool alertCheck)
 {
+    //std::string callingFunction
+    // calling function is for documenting what the calling function is 
+    // calling function is always the full name of the function (e.g. class name::function name
+    // when called by PatientManagement, the string is: PatientManagementSystem::addVitalsRecord
+
     _vitals.push_back(v);
     // TODO: calculate alert levels
+    //check to ensure that historical data isnt being loaded
+
+   // std::cout << callingFunction << std::endl;
+    
     AlertCalcContext context;
+    AmogusSus amogusSus;
+    ERush eRush;
     NoCapSyndrome noCap;
     TiccToccBrainDamage ticcTocc;
 
-    if()
-
-    //if the primary diagnosis is NOCAP_SYNDROME 
-    if (primaryDiagnosis() == Diagnosis::NOCAP_SYNDROME)
+    //goes through the diagnoses and adds them to the context
+    if (alertCheck == true)
     {
-        context.setStrategy(&noCap);
+        if (primaryDiagnosis() == Diagnosis::NOCAP_SYNDROME) { context.setStrategy(&noCap); }
+        else if (primaryDiagnosis() == Diagnosis::TICCTOCC_BRAIN_DAMAGE) { context.setStrategy(&ticcTocc); }
+        else if (primaryDiagnosis() == Diagnosis::AMOGUS_SUS) { context.setStrategy(&amogusSus); }
+        else if (primaryDiagnosis() == Diagnosis::E_RUSH) { context.setStrategy(&eRush); }
+
+        /*for (int i = 0; i < diagnoses().size(); i++)
+        {
+            if (primaryDiagnosis() == Diagnosis::NOCAP_SYNDROME)
+            {
+                context.setStrategy(&noCap);
+                //context.executeStrategy(*this);
+            }
+            else if (primaryDiagnosis() == Diagnosis::TICCTOCC_BRAIN_DAMAGE)
+            {
+                context.setStrategy(&ticcTocc);
+
+            }
+        } */
         context.executeStrategy(*this);
     }
+    //check if patient has multiple diagnoses
+    /*if (diagnoses().size() > 1)
+    {
+        std::cout << "wow " << std::endl;
+    }
+    else
+    {
+        //if the primary diagnosis is NOCAP_SYNDROME 
+        if (primaryDiagnosis() == Diagnosis::NOCAP_SYNDROME)
+        {
+            context.setStrategy(&noCap);
+            context.executeStrategy(*this);
+        }
+    } */
 }
 
 const std::vector<const Vitals*> Patient::vitals() const

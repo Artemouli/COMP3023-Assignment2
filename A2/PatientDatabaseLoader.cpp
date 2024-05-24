@@ -24,7 +24,7 @@ void PatientDatabaseLoader::loadPatients(std::vector<Patient*>& patientIn){
     // push back a new Patient
     Patient* p = new Patient("Joe", "Mama", t);
     p->addDiagnosis(Diagnosis::NOCAP_SYNDROME);
-    //p->addDiagnosis(Diagnosis::TICCTOCC_BRAIN_DAMAGE);
+    p->addDiagnosis(Diagnosis::TICCTOCC_BRAIN_DAMAGE);
 
     Vitals* v = new Vitals(90, 96, 37, 50);
     p->addVitals(v);

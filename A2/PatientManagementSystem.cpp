@@ -101,7 +101,7 @@ void PatientManagementSystem::addVitalsRecord()
         cin >> brainActivity;
 
         Vitals* v = new Vitals(heartRate, oxygenSaturation, bodyTemperature, brainActivity);
-        _patientLookup[pid]->addVitals(v);
+        _patientLookup[pid]->addVitals(v, true);
 
     }
     else {

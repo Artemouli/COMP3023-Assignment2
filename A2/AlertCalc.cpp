@@ -26,12 +26,14 @@ void NoCapSyndrome::calculateAlert(Patient& patient)
 	if (patient.vitals().back()->SPO2() < 90) { patient.setAlertLevel(AlertLevel::Red); }
 	else if (patient.vitals().back()->SPO2() < 92) { patient.setAlertLevel(AlertLevel::Orange); }
 	else if (patient.vitals().back()->SPO2() < 94) { patient.setAlertLevel(AlertLevel::Yellow); }
-	else { patient.setAlertLevel(AlertLevel::Green); }
+	else { patient.setAlertLevel(AlertLevel::Green); } 
+	std::cout << "wow " << patient.vitals().back()->BA() << std::endl;
 }
 
 void TiccToccBrainDamage::calculateAlert(Patient& patient)
 {
 	if (patient.age() < 35 && patient.vitals().back()->BA() < 10) { patient.setAlertLevel(AlertLevel::Red); }
 	else if(patient.age() >= 35 && patient.vitals().back()->BA() < 20) { patient.setAlertLevel(AlertLevel::Red); }
-	else { patient.setAlertLevel(AlertLevel::Green); }
+	else { patient.setAlertLevel(AlertLevel::Green); } 
+	std::cout << "incredible " << patient.vitals().back()->BT() << std::endl;
 }
