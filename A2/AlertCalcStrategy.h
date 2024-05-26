@@ -9,7 +9,7 @@ class Patient;
 class AlertCalcStrategy
 {
 public: 
-	virtual void calculateAlert(Patient& patient) = 0;
+	virtual AlertLevel calculateAlert(Patient& patient) = 0;
 };
 
 #endif 
