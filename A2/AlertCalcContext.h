@@ -23,8 +23,7 @@ public:
 		for (int i = 0; i < alertCalc.size(); i++)
 		{
 			std::cout << i << " " << alertCalc.at(i) << std::endl;
-			alertCalc.at(i)->calculateAlert(patient);
-			std::cout << currentAlertLevel << std::endl;
+			currentAlertLevel = alertCalc.at(i)->calculateAlert(patient);
 		} 
 		//alertCalc->calculateAlert(patient);
 		//for loop that goes through vector and calculates each alert
