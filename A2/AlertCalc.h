@@ -2,8 +2,7 @@
 #define ALERT_CALC
 
 #include "AlertCalcStrategy.h"
-class Patient;
-
+#include "Patient.h"
 
 class AmogusSus : public AlertCalcStrategy
 {

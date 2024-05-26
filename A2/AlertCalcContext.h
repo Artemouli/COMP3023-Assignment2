@@ -13,20 +13,35 @@ class AlertCalcContext
 public:
 	void setStrategy(AlertCalcStrategy* strategy)
 	{
-		//this->alertCalc = strategy;
+		// this->alertCalc = strategy;
 		// add to vector
 		this->alertCalc.push_back(strategy);
 	}
 
-	void executeStrategy(Patient& patient)
+	AlertLevel executeStrategy(Patient& patient)
 	{		
+		// for loop that goes through vector and calculates each alert
 		for (int i = 0; i < alertCalc.size(); i++)
 		{
-			std::cout << i << " " << alertCalc.at(i) << std::endl;
-			currentAlertLevel = alertCalc.at(i)->calculateAlert(patient);
+			checkAlertLevel(alertCalc.at(i)->calculateAlert(patient));
 		} 
+		return currentAlertLevel;
 		//alertCalc->calculateAlert(patient);
-		//for loop that goes through vector and calculates each alert
+	}
+
+	// checks the alert level, and then sets the patients alert level according to the order of priority (e.g. green < yellow, yellow < red, etc)
+	// the enum is compared as an int
+	// green = 0
+	// yellow = 1
+	// orange = 2
+	// red = 3
+	void checkAlertLevel(AlertLevel inputAlert)
+	{
+		// converts the inputAlert and currentAlertLevel to their underlying int values, then sets the currentAlertLevel if the inputAlert is higher
+		if (static_cast<int>(inputAlert) > static_cast<int>(currentAlertLevel))
+		{
+			currentAlertLevel = inputAlert;
+		}
 	}
 
 private:

@@ -121,8 +121,9 @@ void Patient::addVitals(const Vitals* v, bool alertCheck)
             else if (diagnoses().at(i) == Diagnosis::TICCTOCC_BRAIN_DAMAGE) { context.setStrategy(&ticcTocc); }
             else if (diagnoses().at(i) == Diagnosis::AMOGUS_SUS) { context.setStrategy(&amogusSus); }
             else if (diagnoses().at(i) == Diagnosis::E_RUSH) { context.setStrategy(&eRush); }
-            context.executeStrategy(*this);
         } 
+        setAlertLevel(context.executeStrategy(*this));
+        
     }
 }
 
