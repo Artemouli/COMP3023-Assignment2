@@ -32,6 +32,12 @@ void PatientDatabaseLoader::loadPatients(std::vector<Patient*>& patientIn){
 
     patientIn.push_back(p);
 
+    //Load PatientFileLoader
+    PatientFileLoader* patientFileLoader = new PatientFileLoader("patients.txt");
+    patientFileLoader->loadPatientFile();
+
+
+
 }
 
 void PatientDatabaseLoader::closeConnection()

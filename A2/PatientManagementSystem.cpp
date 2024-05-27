@@ -6,7 +6,6 @@
 
 #include "Patient.h"
 #include "PatientDatabaseLoader.h"
-#include "FR3PatientDatabaseLoader.h"
 #include "Vitals.h"
 
 #include "GPNotificationSystemFacade.h"
