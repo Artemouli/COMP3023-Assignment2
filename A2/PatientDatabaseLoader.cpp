@@ -4,6 +4,7 @@
 #include <sstream>
 
 #include "Patient.h"
+#include "PatientFileLoader.h"
 #include "Vitals.h"
 
 
