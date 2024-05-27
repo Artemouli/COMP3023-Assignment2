@@ -20,6 +20,7 @@ std::vector<Patient*> PatientFileLoader::loadPatientFile()
 
     std::ifstream inFile(_file);
     if (inFile.is_open()) {
+        std::cout << "woah " << std::endl;
         // TODO: load your file here
     }
 
