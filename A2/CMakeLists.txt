@@ -27,6 +27,7 @@ add_executable (A2
     "AlertCalcStrategy.h" "AlertCalcStrategy.cpp"
     "AlertCalcContext.h" 
     "AlertCalc.h" "AlertCalc.cpp"
+    "PatientLoaderAdapter.h"
 )
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
