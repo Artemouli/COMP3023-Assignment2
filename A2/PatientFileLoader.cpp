@@ -23,24 +23,49 @@ std::vector<Patient*> PatientFileLoader::loadPatientFile()
     {
         std::string uid;
         std::string birthday;
-        std::string name;
-        std::string diagnoses;
-        std::string vitals;
+        std::string lname;
+        std::string fname;
+        std::vector<std::string> diagnoses;
+        std::vector<std::string> vitals;
         // TODO: load your file here
         while (inFile.peek() != -1)
         {
             std::getline(inFile, uid, '/');
+
+            //converts bday
             std::getline(inFile, birthday, '/');
-            std::getline(inFile, name, '/');
-            std::getline(inFile, diagnoses, '/');
-            std::getline(inFile, vitals);
+            std::tm t{ };
+            std::istringstream ss(birthday);
+            ss >> std::get_time(&t, "%d-%m-%Y");
+
+            //last and first name
+            std::getline(inFile, lname, ',');
+            std::getline(inFile, fname, '/');
+            //std::getline(inFile, diagnoses, '/');
+
+            Patient* newP = new Patient(fname, lname, t);
+
+            std::string diagnosisLine;
+            std::getline(inFile, diagnosisLine, '/');
+
+
+            //converts diagnosis into a stream to stream it into different values for the diagnoses vector
+            std::istringstream diagnosisStream(diagnosisLine);
+            std::string diagnosisLS;
+            while (std::getline(diagnosisStream, diagnosisLS, ','))
+            {
+                diagnoses.push_back(diagnosisLS);
+            }
 
 
             std::cout << "uid " << uid << std::endl;
             std::cout << "birthday " << birthday << std::endl;
-            std::cout << "name " << name << std::endl;
-            std::cout << "diagnoses " << diagnoses << std::endl;
-            std::cout << "vitals " << vitals << std::endl;
+            std::cout << "name " << lname << std::endl;
+            std::cout << "name " << fname << std::endl;
+            for (int i = 0; i < diagnoses.size(); i++)
+            {
+                std::cout << "diagnosis " << diagnoses.at(i) << std::endl;
+            }
         }
     }
 
