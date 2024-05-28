@@ -123,7 +123,6 @@ void Patient::addVitals(const Vitals* v, bool alertCheck)
             else if (diagnoses().at(i) == Diagnosis::E_RUSH) { context.setStrategy(&eRush); }
         } 
         setAlertLevel(context.executeStrategy(*this));
-        
     }
 }
 

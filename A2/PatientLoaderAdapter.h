@@ -1,17 +1,22 @@
 #ifndef PATIENT_LOADER_ADAPTER
 #define PATIENT_LOADER_ADAPTER
 
+
+#include <iostream>
+#include <memory>
+
 #include "AbstractPatientDatabaseLoader.h"
 // Adaptee
 #include "PatientFileLoader.h"
+
 
 class PatientLoaderAdapter : public AbstractPatientDatabaseLoader
 {
 public:
 	virtual void initialiseConnection() override 
 	{
-		patientFileLoader = new PatientFileLoader("patients.txt");
 		//initialise connection with patient file
+		patientFileLoader = std::make_unique<PatientFileLoader>("patients.txt");
 	};
 	virtual void loadPatients(std::vector<Patient*>& patientIn) override
 	{
@@ -19,11 +24,10 @@ public:
 	};
 	virtual void closeConnection() override
 	{
-		delete patientFileLoader;
 		// close connection
 	};
 private:
-	PatientFileLoader* patientFileLoader;
+	std::unique_ptr<PatientFileLoader> patientFileLoader;
 };
 
 #endif
