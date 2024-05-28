@@ -25,6 +25,7 @@ std::vector<Patient*> PatientFileLoader::loadPatientFile()
         std::string birthday;
         std::string lname;
         std::string fname;
+        // no diagnosis string needed, as diagnosis can be added to patient file easily 
         std::vector<int> vitals;
         // TODO: load your file here
         while (inFile.peek() != -1)
@@ -78,6 +79,10 @@ std::vector<Patient*> PatientFileLoader::loadPatientFile()
                 newP->addVitals(inputVitals);
             } 
 
+            patients.push_back(newP);
+
+            // testing 
+            /*
             std::cout << newP->humanReadableID() << std::endl;
             std::cout << newP->age() << std::endl;
 
@@ -92,7 +97,7 @@ std::vector<Patient*> PatientFileLoader::loadPatientFile()
                 std::cout << "SP02  " << newP->vitals().at(i)->SPO2() << std::endl;
                 std::cout << "BT  " << newP->vitals().at(i)->BT() << std::endl;
                 std::cout << "BA  " << newP->vitals().at(i)->BA() << std::endl;
-            }
+            } */
         }
     }
 

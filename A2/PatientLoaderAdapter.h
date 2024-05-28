@@ -20,7 +20,13 @@ public:
 	};
 	virtual void loadPatients(std::vector<Patient*>& patientIn) override
 	{
-		patientFileLoader->loadPatientFile();
+		std::vector<Patient*> patients = patientFileLoader->loadPatientFile();
+
+		for (int i = 0; i < patients.size(); i++)
+		{
+			patientIn.push_back(patients.at(i));
+		}
+
 	};
 	virtual void closeConnection() override
 	{
