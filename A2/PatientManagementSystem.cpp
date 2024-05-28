@@ -6,6 +6,7 @@
 
 #include "Patient.h"
 #include "PatientDatabaseLoader.h"
+#include "PatientLoaderAdapter.h"
 #include "Vitals.h"
 
 #include "GPNotificationSystemFacade.h"
@@ -15,7 +16,8 @@ using namespace std;
 
 
 PatientManagementSystem::PatientManagementSystem() :
-    _patientDatabaseLoader(std::make_unique<PatientDatabaseLoader>()),
+    //_patientDatabaseLoader(std::make_unique<PatientDatabaseLoader>()),
+    _patientDatabaseLoader(std::make_unique<PatientLoaderAdapter>()),
     _hospitalAlertSystem(std::make_unique<HospitalAlertSystemFacade>()),
     _gpNotificationSystem(std::make_unique<GPNotificationSystemFacade>())
 {

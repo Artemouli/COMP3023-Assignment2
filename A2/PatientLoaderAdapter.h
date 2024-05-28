@@ -10,18 +10,20 @@ class PatientLoaderAdapter : public AbstractPatientDatabaseLoader
 public:
 	virtual void initialiseConnection() override 
 	{
+		patientFileLoader = new PatientFileLoader("patients.txt");
 		//initialise connection with patient file
 	};
 	virtual void loadPatients(std::vector<Patient*>& patientIn) override
 	{
-		patientFileLoader.loadPatientFile();
+		patientFileLoader->loadPatientFile();
 	};
 	virtual void closeConnection() override
 	{
+		delete patientFileLoader;
 		// close connection
 	};
 private:
-	PatientFileLoader patientFileLoader("patients.txt");
+	PatientFileLoader* patientFileLoader;
 };
 
 #endif
