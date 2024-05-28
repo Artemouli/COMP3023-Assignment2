@@ -4,7 +4,6 @@
 #include <sstream>
 
 #include "Patient.h"
-#include "PatientFileLoader.h"
 #include "Vitals.h"
 
 
@@ -31,13 +30,6 @@ void PatientDatabaseLoader::loadPatients(std::vector<Patient*>& patientIn){
     p->addVitals(v);
 
     patientIn.push_back(p);
-
-    //Load PatientFileLoader
-    PatientFileLoader* patientFileLoader = new PatientFileLoader("patients.txt");
-    patientFileLoader->loadPatientFile();
-
-
-
 }
 
 void PatientDatabaseLoader::closeConnection()
