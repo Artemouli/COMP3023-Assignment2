@@ -100,6 +100,10 @@ std::vector<Patient*> PatientFileLoader::loadPatientFile()
             } */
         }
     }
+    else
+    {
+        std::cout << "ERROR: '" << _file << "' Does not exist!" << std::endl;
+    }
 
     return patients;
 }

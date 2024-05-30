@@ -90,16 +90,14 @@ const std::vector<std::string>& Patient::diagnoses() const
 
 void Patient::addVitals(const Vitals* v, bool alertCheck)
 {
-    //std::string callingFunction
+    // std::string callingFunction
     // calling function is for documenting what the calling function is 
     // calling function is always the full name of the function (e.g. class name::function name
     // when called by PatientManagement, the string is: PatientManagementSystem::addVitalsRecord
 
     _vitals.push_back(v);
+    
     // TODO: calculate alert levels
-    //check to ensure that historical data isnt being loaded
-
-   // std::cout << callingFunction << std::endl;
     
     AlertCalcContext context;
     AmogusSus amogusSus;
@@ -107,7 +105,7 @@ void Patient::addVitals(const Vitals* v, bool alertCheck)
     NoCapSyndrome noCap;
     TiccToccBrainDamage ticcTocc;
 
-    //goes through the diagnoses and adds them to the context
+    // check to ensure that historical data isnt being loaded
     if (alertCheck == true)
     {
         /*if (primaryDiagnosis() == Diagnosis::NOCAP_SYNDROME) { context.setStrategy(&noCap); }
@@ -115,6 +113,7 @@ void Patient::addVitals(const Vitals* v, bool alertCheck)
         else if (primaryDiagnosis() == Diagnosis::AMOGUS_SUS) { context.setStrategy(&amogusSus); }
         else if (primaryDiagnosis() == Diagnosis::E_RUSH) { context.setStrategy(&eRush); } */
 
+        // goes through the diagnoses and adds them to the context
         for (int i = 0; i < diagnoses().size(); i++)
         {
             if (diagnoses().at(i) == Diagnosis::NOCAP_SYNDROME) { context.setStrategy(&noCap); }
