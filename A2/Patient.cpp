@@ -5,6 +5,7 @@
 #include "AlertCalcContext.h"
 #include "AlertCalcStrategy.h"
 #include "AlertCalc.h"
+#include "AlertNotificationSystem.h"
 
 #include <iostream>
 #include <iomanip>
@@ -133,6 +134,7 @@ const std::vector<const Vitals*> Patient::vitals() const
 void Patient::setAlertLevel(AlertLevel level)
 {
     _alertLevel = level;
+    AlertNotificationSystem alertNotification;
 
     if (_alertLevel > AlertLevel::Green) {
         cout << "Patient: " << humanReadableID() << " has an alert level: ";
@@ -148,5 +150,6 @@ void Patient::setAlertLevel(AlertLevel level)
             break;
         }
         cout << endl;
+        alertNotification.sendNotification(this);
     }
 }

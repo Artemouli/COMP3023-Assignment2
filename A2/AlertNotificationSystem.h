@@ -16,8 +16,8 @@ public:
 	}
 	void sendNotification(Patient* patient)
 	{
-		gpNotification->sendGPNotificationForPatient(patient);
 		hospitalNotification->sendAlertForPatient(patient);
+		gpNotification->sendGPNotificationForPatient(patient);
 	}
 private:
 	std::unique_ptr<GPNotificationSystemFacade> gpNotification;
